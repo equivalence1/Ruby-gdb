@@ -74,7 +74,23 @@ end
 `Debase::Context` использует `Debase.heandler`. Он устанавливается в `lib/ruby-debug-ide.rb:123`. Это просто `EventProcessor` (лежит там же)
 
 
-genuine run configuration: `-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)`
+#Configs
+genuine run configuration: `-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)` (do we need `at_exit{sleep(1)}`?)
+run without attaching:     `-e $stdout.sync=true;$stderr.sync=true;ARGV.shift;load($0=\"/home/user/Ruby/ruby-debug-ide/bin/rdebug-ide\")`
+my run configuration       `-e $stdout.sync=true;$stderr.sync=true;ARGV.shift;load($0=\"/home/user/Ruby/GDB/gdb_wrapper.rb\")`
 
-my run configuration `-e at_exit{sleep(1)};$stdout.sync=true;$stderr.sync=true;ARGV.shift;load($0=\"/home/user/Ruby/GDB/gdb_wrapper.rb\") -a 19539`
 
+#GLOBAL TODO LIST:
+
+1. Stop command
+
+checkout /home/user/IDEA/community/platform/xdebugger-impl/src/com/intellij/xdebugger/impl/XDebugSessionImpl.java:900
+(search for `ProcessHandler processHandler = myDebugProcess.getProcessHandler();`)
+
+`destroyProcessImpl` calls `notifyProcessTerminated` 
+
+2. test line event
+
+3. gdb needs sudo
+
+4. test with different ruby versions

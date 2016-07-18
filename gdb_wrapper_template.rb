@@ -1,4 +1,4 @@
-pid = 6455
+pid = ^
 
 def check_ruby_process
     begin
