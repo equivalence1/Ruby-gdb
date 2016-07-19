@@ -9,7 +9,7 @@
 #########################################
 
 def load_debugger(new_argv)
-  PATH_TO_RDEBUG = "/home/user/Ruby/ruby-debug-ide/bin/rdebug-ide"
+  path_to_rdebug = "/home/user/Ruby/ruby-debug-ide/bin/rdebug-ide"
 
   old_argv = ARGV.clone
   ARGV.reject {|x| true}
@@ -18,9 +18,9 @@ def load_debugger(new_argv)
   end
   
   old_0 = $0.clone
-  $0 = PATH_TO_RDEBUG
+  $0 = path_to_rdebug
 
-  load PATH_TO_RDEBUG
+  load path_to_rdebug
 
   $0 = old_0
   ARGV.reject {|x| true}
